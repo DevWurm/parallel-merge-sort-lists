@@ -86,7 +86,7 @@ arguments<T> parse_arguments(int argc, char* argv[]) { //parse the command line 
 			return_values.display_information = true;				// and duration in command line
 		}
 		else if (args.at(i) == "-p" || args.at(i) == "--parallel") { //Use parallel merge sort version
-			return_values.display_information = true;
+			return_values.use_parallel = true;
 		}
 		else if (args.at(i) == "-O" || args.at(i) == "--output-information") {//information output argument (display start, stop, list length
 			return_values.output_information = true;						 // and duration into file
