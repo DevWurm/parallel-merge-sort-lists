@@ -39,6 +39,7 @@
 #include <fstream>
 #include <iostream>
 #include <deque>
+#include <thread>
 #include "../liberror/liberror.h"
 #include "../libmergesort/libmergesort.h"
 #include "../headers/arguments.h"
@@ -94,6 +95,9 @@ void perform_sorting(int argc, char* argv[]) {
 
 			if (user_arguments.display_information) { //sort with verbose output if option is set
 				cout << "List length: " << sort.get_data_length() << '\n';
+				if (user_arguments.use_parallel) { //display number of processors
+					cout << "Using " << thread::hardware_concurrency() << " Threads\n";
+				}
 				cout << "Sorting started\n";
 				if (user_arguments.use_parallel) {
 					sort.parallel_merge_sort_data(); //sort parallel if option is set
@@ -129,6 +133,9 @@ void perform_sorting(int argc, char* argv[]) {
 
 		if (user_arguments.display_information) { //sort with verbose output if option is set
 			cout << "List length: " << sort.get_data_length() << '\n';
+			if (user_arguments.use_parallel) { //display number of processors
+				cout << "Using " << thread::hardware_concurrency() << " Threads\n";
+			}
 			cout << "Sorting started\n";
 			if (user_arguments.use_parallel) {
 				sort.parallel_merge_sort_data(); //sort parallel if option is set
